@@ -1,3 +1,17 @@
+# gis data / ArcGIS Pro files
+*.csv
+*.gdb
+*.tbx
+*.aprx
+*.pdf
+data/
+arcgis/
+ImportLog/
+Index/
+
+# pycharm
+.idea
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
