@@ -1,9 +1,16 @@
 # gis data / ArcGIS Pro files
+*.cpg
+*.dbf
+*.prj
+*.shp
+*.shx
+*.xml
 *.csv
 *.gdb
 *.tbx
 *.aprx
 *.pdf
+*.zip
 data/
 arcgis/
 ImportLog/

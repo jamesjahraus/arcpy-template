@@ -46,7 +46,7 @@ def import_spatial_reference(dataset):
     Returns:
         The spatial reference of any dataset input.
     """
-    spatial_reference = arcpy.Describe(dataset).SpatialReference
+    spatial_reference = arcpy.Describe(dataset).spatialReference
     arcpy.AddMessage('spatial_reference: {0}'.format(spatial_reference.name))
     return spatial_reference
 
@@ -125,19 +125,19 @@ def main():
     * Program and run arcpy module from this template.
     """
     # Setup Geoprocessing Environment
-    spatial_ref_dataset = ''
+    spatial_ref_dataset = 'BoulderAreaTrailheads'
     wd = pwd()
-    input_db = set_path(wd, 'db.gdb')
-    # output_db may be omitted, then all inputs and outputs will go to the main project db
-    output_db = set_path(wd, 'db_output.gdb')
-    setup_env(input_db, spatial_ref_dataset)
+    # Optional: use input_db and output_db.
+    # input_db = set_path(wd, 'Project.gdb')
+    # output_db = set_path(wd, 'Project_output.gdb')
+    db = set_path(wd, 'arcpytemplate.gdb')
+    setup_env(db, spatial_ref_dataset)
 
-    # Geoprocessing Tools
-    """
-    Example:
-    clip_analysis = arcpy.Clip_analysis(...
-    check_status(clip_analysis)
-    """
+    # Geoprocessing Tools Example
+    # https://pro.arcgis.com/en/pro-app/latest/tool-reference/analysis/buffer.htm
+    buffer_trails = arcpy.Buffer_analysis('BoulderAreaTrailheads', 'Trailheads_Buff', '100 Meters', 'FULL', 'ROUND',
+                                          'ALL')
+    check_status(buffer_trails)
 
 
 if __name__ == '__main__':
